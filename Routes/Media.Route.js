@@ -1,0 +1,12 @@
+const express=require('express')
+const { uploadMedia, getAllMedia, getMediaById, updateMedia, deleteMedia } = require('../Controllers/Media.Controller')
+const router=express.Router()
+const multer = require('multer')
+const { protect, adminOnly } = require('../Middleware/protect')
+const upload=multer({dest:'uploads/'})
+router.post('/upload',upload.single('file'),protect,uploadMedia)
+router.get('/getallmedia',getAllMedia)
+router.get('/getmediabyid/:id',getMediaById)
+router.put('/updatemedia/:id',protect,adminOnly,upload.single('file'),updateMedia)
+router.delete('/deletemedia/:id',protect,adminOnly,deleteMedia)
+module.exports=router
