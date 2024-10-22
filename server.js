@@ -13,6 +13,8 @@ const contentRoute=require('./Routes/Content.Route')
 const articleRoute=require('./Routes/Article.Route')
 const pageRoute=require('./Routes/Page.Route')
 const customContentTypeRoute=require('./Routes/CustomContentType.Route')
+const tagRoute=require('./Routes/Tag.Route')
+const mediaCategoryRoute=require('./Routes/MediaCategory.Route')
 dbConnection();
 //app api
 app.use('/api/user',userRoute)
@@ -23,6 +25,8 @@ app.use('/api/content',contentRoute)
 app.use('/api/article',articleRoute)
 app.use('/api/page',pageRoute)
 app.use('/api/customcontent',customContentTypeRoute)
+app.use('/api/tag',tagRoute)
+app.use('/api/mediacategory',mediaCategoryRoute)
 
 
 const port=process.env.PORT || 4000
