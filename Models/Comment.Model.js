@@ -1,0 +1,41 @@
+const mongoose=require('mongoose')
+
+const commentSchema=mongoose.Schema({
+    content:{
+        type:String,
+        trim:true,
+        required:true
+    },
+    author:{
+        type:mongoose.Schema.Types.ObjectId,
+        required:true,
+        ref:"User"
+    },
+    article:{
+        type:mongoose.Schema.Types.ObjectId,
+        required:true,
+        ref:"Article"
+    },
+    parentComment:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Comment",
+        default:null
+    },
+    replies:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Comment",
+    }],
+    isApproved:{
+        type:Boolean,
+        default:false
+    },
+    isEdited:{
+        type:Boolean,
+        default:false
+    },
+    deletedAt:{
+        type:Date,
+        default:null
+    }
+},{timestamps:true})
+module.exports=mongoose.model('Comment',commentSchema)

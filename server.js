@@ -17,6 +17,8 @@ const tagRoute=require('./Routes/Tag.Route')
 const mediaCategoryRoute=require('./Routes/MediaCategory.Route')
 const menuItemRoute=require('./Routes/MenuItem.Route')
 const menuRoute=require('./Routes/Menu.Route')
+const commentRoute=require('./Routes/Comment.Route')
+const reviewRoute=require('./Routes/Review.Route')
 dbConnection();
 //app api
 app.use('/api/user',userRoute)
@@ -31,6 +33,8 @@ app.use('/api/tag',tagRoute)
 app.use('/api/mediacategory',mediaCategoryRoute)
 app.use('/api/menuitem',menuItemRoute)
 app.use('/api/menu',menuRoute)
+app.use('/api/comment',commentRoute)
+app.use('/api/review',reviewRoute)
 const port=process.env.PORT || 4000
 app.listen(port,()=>{
     console.log(`server is running on ${port}`)
