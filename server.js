@@ -1,9 +1,17 @@
 const express=require('express')
 const app=express()
+const cookieParser = require('cookie-parser');
 const dotenv=require('dotenv').config()
+const helmet=require('helmet')
+const csurf=require('csurf')
 //middleware routes
+app.use(cookieParser());
+app.use(helmet())
+const csrfProtection=csurf({cookie:true})
+app.use(csrfProtection)
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
+//routes
 const dbConnection=require('./dbConnection/dbConnection')
 const userRoute=require('./Routes/User.Route')
 const roleRoute=require('./Routes/Role.Route')
@@ -23,6 +31,7 @@ const searchRoute=require('./Routes/Search.Route')
 const contentAnalyticRoute=require('./Routes/ContentAnalytic.Route')
 const userAnalyticRoute=require('./Routes/UserAnalytic.Route')
 const reportRoute=require('./Routes/Report.Route')
+const auditLogRoute=require('./Routes/AuditLog.Route')
 dbConnection();
 //app api
 app.use('/api/user',userRoute)
@@ -43,6 +52,7 @@ app.use('/api/search',searchRoute)
 app.use('/api/contentanalytic',contentAnalyticRoute)
 app.use('/api/useranalytic',userAnalyticRoute)
 app.use('/api/report',reportRoute)
+app.use('/api/auditlog',auditLogRoute)
 const port=process.env.PORT || 4000
 app.listen(port,()=>{
     console.log(`server is running on ${port}`)
