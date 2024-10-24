@@ -19,6 +19,10 @@ const menuItemRoute=require('./Routes/MenuItem.Route')
 const menuRoute=require('./Routes/Menu.Route')
 const commentRoute=require('./Routes/Comment.Route')
 const reviewRoute=require('./Routes/Review.Route')
+const searchRoute=require('./Routes/Search.Route')
+const contentAnalyticRoute=require('./Routes/ContentAnalytic.Route')
+const userAnalyticRoute=require('./Routes/UserAnalytic.Route')
+const reportRoute=require('./Routes/Report.Route')
 dbConnection();
 //app api
 app.use('/api/user',userRoute)
@@ -35,6 +39,10 @@ app.use('/api/menuitem',menuItemRoute)
 app.use('/api/menu',menuRoute)
 app.use('/api/comment',commentRoute)
 app.use('/api/review',reviewRoute)
+app.use('/api/search',searchRoute)
+app.use('/api/contentanalytic',contentAnalyticRoute)
+app.use('/api/useranalytic',userAnalyticRoute)
+app.use('/api/report',reportRoute)
 const port=process.env.PORT || 4000
 app.listen(port,()=>{
     console.log(`server is running on ${port}`)

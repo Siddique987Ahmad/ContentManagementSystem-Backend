@@ -15,6 +15,11 @@ const contentSchema=mongoose.Schema({
 },{timestamps:true})
 
 contentSchema.add(baseContentSchema)
+contentSchema.index({
+    title: 'text',
+    body: 'text',
+    tags: 'text'  // assuming 'tags' were stored as 'seo.keywords'
+  });
 
 contentSchema.pre('save',async function (next) {
     const content=this
