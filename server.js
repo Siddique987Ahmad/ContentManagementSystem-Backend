@@ -7,8 +7,8 @@ const csurf=require('csurf')
 //middleware routes
 app.use(cookieParser());
 app.use(helmet())
-const csrfProtection=csurf({cookie:true})
-app.use(csrfProtection)
+// const csrfProtection=csurf({cookie:true})
+// app.use(csrfProtection)
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 //routes
@@ -32,6 +32,7 @@ const contentAnalyticRoute=require('./Routes/ContentAnalytic.Route')
 const userAnalyticRoute=require('./Routes/UserAnalytic.Route')
 const reportRoute=require('./Routes/Report.Route')
 const auditLogRoute=require('./Routes/AuditLog.Route')
+const backupRoute=require('./Routes/Backeup.Route')
 dbConnection();
 //app api
 app.use('/api/user',userRoute)
@@ -53,6 +54,7 @@ app.use('/api/contentanalytic',contentAnalyticRoute)
 app.use('/api/useranalytic',userAnalyticRoute)
 app.use('/api/report',reportRoute)
 app.use('/api/auditlog',auditLogRoute)
+app.use('/api',backupRoute)
 const port=process.env.PORT || 4000
 app.listen(port,()=>{
     console.log(`server is running on ${port}`)
