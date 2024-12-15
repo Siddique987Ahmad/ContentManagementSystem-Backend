@@ -11,6 +11,9 @@ app.use(helmet())
 // app.use(csrfProtection)
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
+app.get('/',(req,res)=>{
+    res.send("heloo @")
+})
 //routes
 const dbConnection=require('./dbConnection/dbConnection')
 const userRoute=require('./Routes/User.Route')

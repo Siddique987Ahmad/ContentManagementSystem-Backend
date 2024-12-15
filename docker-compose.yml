@@ -1,0 +1,16 @@
+services:
+  node-app:
+    build: .
+    ports:
+      - "4001:4000"
+    environment:
+      - PORT=4000
+#   mongo:
+#     image: mongo
+#     environment:
+#        - MONGO_INITDB_ROOT_USERNAME=siddiq
+#        - MONGO_INITDB_ROOT_PASSWORD=1234
+#     volumes:
+#        - mongo-data:/data/db   
+# volumes:
+#   mongo-data:      

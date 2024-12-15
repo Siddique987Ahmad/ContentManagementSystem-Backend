@@ -1,0 +1,12 @@
+services:
+  node-app:
+    build:
+      context: .
+      args:
+        NODE_ENV: development
+    volumes:
+      - ./:/app  # Mount code into the container (dev purpose)
+      - /app/node_modules  # Mount Docker socket (useful for Docker interaction)
+    environment:
+      - NODE_ENV=development
+    command: npm run dev  # Run in dev mode
